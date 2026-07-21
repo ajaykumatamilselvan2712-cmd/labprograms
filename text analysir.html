@@ -1,0 +1,27 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Mini text Analyzer</h2>
+    <textarea id="paragraph"
+                rows="10" cols="50"
+                placeholder="Enter your text here..."></textarea>
+                <button onclick="analyzeText()">Analyze</button>
+    <pre id="result"></pre>
+    <script>
+        function analyzeText() {
+            let text = document.getElementById('paragraph').value;
+            let totalcharacters = text.length;
+            let words = text.match(/\b\w+\b/g)?.length || 0;
+            let totalwords = words.length;
+            let sentences = text.match(/[.!?]+/g)?.length || 0;
+            let output = `Total Characters: ${totalcharacters}\nTotal Words: ${totalwords}\nTotal Sentences: ${sentences}`;
+            document.getElementById('result').textContent = output;
+        }
+    </script>   
+</body>
+</html>
